@@ -1,6 +1,10 @@
 import React from 'react';
 
-const TitleRow: React.FC = () => {
+interface TUserHeaderFilters {
+  setIsLoading: Function;
+}
+
+const UserHeaderFilters: React.FC<TUserHeaderFilters> = ({ setIsLoading }) => {
   return (
     <tr>
       <th>
@@ -31,4 +35,4 @@ const TitleRow: React.FC = () => {
   );
 };
 
-export default TitleRow;
+export default UserHeaderFilters;

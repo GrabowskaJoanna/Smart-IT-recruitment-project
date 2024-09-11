@@ -1,16 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface TUser {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  phone: string;
-}
-
-interface UserState {
-  users: TUser[];
-}
+import { TUser, UserState } from '../types';
 
 const initialState: UserState = {
   users: [],

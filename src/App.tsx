@@ -1,5 +1,5 @@
 import React from 'react';
-import Users from './components/Users';
+import Users from './pages/UserList/Users';
 
 const App: React.FC = () => {
   return (

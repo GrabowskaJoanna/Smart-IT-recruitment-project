@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../store/store';
-import { setUsers } from '../store/userSlice';
-import TableBody from './TableBody';
-import TableHead from './TableHead';
+import { RootState, AppDispatch } from '../../store/store';
+import { setUsers } from '../../store/userSlice';
+import TableBody from './components/TableBody';
+import TableHead from './components/TableHead';
+import Loading from '../../shared/Loading';
 
 const Users: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
   const users = useSelector((state: RootState) => state.users.users);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -21,13 +21,15 @@ const Users: React.FC = () => {
         }
       );
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('An error occurred while sending the request!');
       }
       const data = await response.json();
       dispatch(setUsers(data));
     } catch (error) {
-      setError('There was a problem with download');
-      console.error('There was the problem with download', error);
+      console.error(
+        'An error occurred while fetching users from the server!',
+        error
+      );
     } finally {
       setIsLoading(false);
     }
@@ -35,22 +37,16 @@ const Users: React.FC = () => {
 
   useEffect(() => {
     showUser();
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
       <h1>Users</h1>
-      <div>
-        {isLoading ? (
-          'Loading...'
-        ) : error ? (
-          error
-        ) : (
-          <table>
-            <TableHead />
-            <TableBody />
-          </table>
-        )}
+      <div className="table-container">
+        <table>
+          <TableHead setIsLoading={setIsLoading} />
+          <TableBody isLoading={isLoading} />
+        </table>
       </div>
     </>
   );

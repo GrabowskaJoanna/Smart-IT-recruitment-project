@@ -1,0 +1,27 @@
+.table-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  width: 80vw;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: #eaeaea;
+}
+
+tr {
+  display: flex;
+  border-bottom: 1px solid black;
+  padding: 12px 0;
+  justify-content: space-around;
+  th {
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+    }
+  }
+}

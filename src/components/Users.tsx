@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../store/store';
 import { setUsers } from '../store/userSlice';
+import TableBody from './TableBody';
+import TableHead from './TableHead';
 
 const Users: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -35,7 +37,23 @@ const Users: React.FC = () => {
     showUser();
   }, [dispatch]);
 
-  return <h1>{isLoading ? 'Loading...' : error ? error : 'Users'}</h1>;
+  return (
+    <>
+      <h1>Users</h1>
+      <div>
+        {isLoading ? (
+          'Loading...'
+        ) : error ? (
+          error
+        ) : (
+          <table>
+            <TableHead />
+            <TableBody />
+          </table>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default Users;

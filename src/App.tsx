@@ -1,12 +1,12 @@
 import React from 'react';
+import Users from './components/Users';
 
 const App: React.FC = () => {
   return (
-      <div>
-        <h1>Hello!</h1>
-      </div>
+    <div>
+      <Users />
+    </div>
   );
 };
 
 export default App;
-

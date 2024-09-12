@@ -19,7 +19,7 @@ const TableBody: React.FC<TTableBodyProps> = ({ isLoading, users }) => {
         </tr>
       ) : users.length === 0 ? (
         <tr>
-          <td colSpan={4} style={{ textAlign: 'center' }}>
+          <td className="not_found" colSpan={4}>
             No users found.
           </td>
         </tr>

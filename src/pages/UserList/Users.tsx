@@ -54,15 +54,15 @@ const Users: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <h1>Users</h1>
-      <div className="table-container">
-        <table>
+    <div className="page_container">
+      <h1 className="page_header">Users</h1>
+      <div className="table_container">
+        <table className="table_users">
           <TableHead />
           <TableBody isLoading={isLoading} users={filteredUsers} />
         </table>
       </div>
-    </>
+    </div>
   );
 };
 

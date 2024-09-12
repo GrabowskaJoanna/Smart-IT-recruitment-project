@@ -9,11 +9,16 @@ const UserHeaderFilters: React.FC = () => {
 
   const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    if (name === 'phone' && !/^\d*$/.test(value)) {
+      return;
+    }
+
     dispatch(setFilters({ ...filters, [name]: value }));
   };
 
   return (
-    <tr>
+    <tr className="filters_header">
       <th>
         <label>
           Name
@@ -33,7 +38,12 @@ const UserHeaderFilters: React.FC = () => {
       <th>
         <label>
           Phone
-          <input name="phone" value={filters.phone} onChange={handleFilter} />
+          <input
+            type="tel"
+            name="phone"
+            value={filters.phone}
+            onChange={handleFilter}
+          />
         </label>
       </th>
       <th>

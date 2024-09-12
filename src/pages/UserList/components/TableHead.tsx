@@ -1,14 +1,10 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import TitleRow from './UserHeaderFilters';
 
-interface TTableHead {
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
-}
-
-const TableHead: React.FC<TTableHead> = ({ setIsLoading }) => {
+const TableHead: React.FC = () => {
   return (
     <thead>
-      <TitleRow setIsLoading={setIsLoading} />
+      <TitleRow />
     </thead>
   );
 };

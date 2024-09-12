@@ -1,23 +1,26 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import TableRow from './UserRow';
-import { RootState } from '../../../store/store';
-import Loading from '../../../shared/Loading';
+import TableRow from './TableRow';
 import { TUser } from '../../../types';
+import Loading from '../../../shared/Loading';
 
 interface TTableBodyProps {
   isLoading: boolean;
+  users: TUser[];
 }
 
-const TableBody: React.FC<TTableBodyProps> = ({ isLoading }) => {
-  const users = useSelector((state: RootState) => state.users.users);
-
+const TableBody: React.FC<TTableBodyProps> = ({ isLoading, users }) => {
   return (
     <tbody>
       {isLoading ? (
         <tr>
           <td colSpan={4}>
             <Loading />
+          </td>
+        </tr>
+      ) : users.length === 0 ? (
+        <tr>
+          <td colSpan={4} style={{ textAlign: 'center' }}>
+            No users found.
           </td>
         </tr>
       ) : (

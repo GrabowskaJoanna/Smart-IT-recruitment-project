@@ -1,34 +1,45 @@
 import React from 'react';
+import { RootState, AppDispatch } from '../../../store/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilters } from '../../../store/userSlice';
 
-interface TUserHeaderFilters {
-  setIsLoading: Function;
-}
+const UserHeaderFilters: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const filters = useSelector((state: RootState) => state.users.filters);
 
-const UserHeaderFilters: React.FC<TUserHeaderFilters> = ({ setIsLoading }) => {
+  const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    dispatch(setFilters({ ...filters, [name]: value }));
+  };
+
   return (
     <tr>
       <th>
         <label>
           Name
-          <input />
+          <input name="name" value={filters.name} onChange={handleFilter} />
         </label>
       </th>
       <th>
         <label>
           Username
-          <input />
+          <input
+            name="username"
+            value={filters.username}
+            onChange={handleFilter}
+          />
         </label>
       </th>
       <th>
         <label>
           Phone
-          <input />
+          <input name="phone" value={filters.phone} onChange={handleFilter} />
         </label>
       </th>
       <th>
         <label>
           Email
-          <input />
+          <input name="email" value={filters.email} onChange={handleFilter} />
         </label>
       </th>
     </tr>

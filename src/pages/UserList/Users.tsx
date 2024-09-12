@@ -4,12 +4,26 @@ import { RootState, AppDispatch } from '../../store/store';
 import { setUsers } from '../../store/userSlice';
 import TableBody from './components/TableBody';
 import TableHead from './components/TableHead';
-import Loading from '../../shared/Loading';
 
 const Users: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const users = useSelector((state: RootState) => state.users.users);
+  const filters = useSelector((state: RootState) => state.users.filters);
   const dispatch = useDispatch<AppDispatch>();
+
+  const normalizePhoneNumber = (phone: string) => {
+    return phone.replace(/\D/g, '');
+  };
+
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(filters.name.toLowerCase()) &&
+      user.username.toLowerCase().includes(filters.username.toLowerCase()) &&
+      normalizePhoneNumber(user.phone).includes(
+        normalizePhoneNumber(filters.phone)
+      ) &&
+      user.email.toLowerCase().includes(filters.email.toLowerCase())
+  );
 
   const showUser = async () => {
     try {
@@ -44,8 +58,8 @@ const Users: React.FC = () => {
       <h1>Users</h1>
       <div className="table-container">
         <table>
-          <TableHead setIsLoading={setIsLoading} />
-          <TableBody isLoading={isLoading} />
+          <TableHead />
+          <TableBody isLoading={isLoading} users={filteredUsers} />
         </table>
       </div>
     </>

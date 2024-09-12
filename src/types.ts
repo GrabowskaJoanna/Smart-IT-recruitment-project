@@ -6,6 +6,14 @@ export interface TUser {
   phone: string;
 }
 
+export interface Filters {
+  name: string;
+  username: string;
+  phone: string;
+  email: string;
+}
+
 export interface UserState {
   users: TUser[];
+  filters: Filters;
 }

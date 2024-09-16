@@ -6,7 +6,7 @@ export interface TUser {
   phone: string;
 }
 
-export interface Filters {
+export interface TUserFilter {
   name: string;
   username: string;
   phone: string;
@@ -15,5 +15,5 @@ export interface Filters {
 
 export interface UserState {
   users: TUser[];
-  filters: Filters;
+  filters: TUserFilter;
 }

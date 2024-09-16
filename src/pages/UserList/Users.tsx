@@ -13,17 +13,20 @@ const Users: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const normalizePhoneNumber = (phone: string) => {
-    return phone.replace(/\D/g, '');
+    if (phone) {
+      return phone.replace(/\D/g, '');
+    }
+    return phone;
   };
 
   const filteredUsers = users.filter(
     (user) =>
-      user.name.toLowerCase().includes(filters.name.toLowerCase()) &&
-      user.username.toLowerCase().includes(filters.username.toLowerCase()) &&
+      user.name?.toLowerCase().includes(filters.name?.toLowerCase()) &&
+      user.username?.toLowerCase().includes(filters.username?.toLowerCase()) &&
       normalizePhoneNumber(user.phone).includes(
         normalizePhoneNumber(filters.phone)
       ) &&
-      user.email.toLowerCase().includes(filters.email.toLowerCase())
+      user.email?.toLowerCase().includes(filters.email?.toLowerCase())
   );
 
   const showUser = async () => {

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TUser, UserState } from '../types';
+import { TUser, UserState, TUserFilter } from '../types';
 
 const initialState: UserState = {
   users: [],
@@ -18,15 +18,7 @@ const userSlice = createSlice({
     setUsers(state, action: PayloadAction<TUser[]>) {
       state.users = action.payload;
     },
-    setFilters(
-      state,
-      action: PayloadAction<{
-        name: string;
-        username: string;
-        phone: string;
-        email: string;
-      }>
-    ) {
+    setFilters(state, action: PayloadAction<TUserFilter>) {
       state.filters = action.payload;
     },
   },

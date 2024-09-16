@@ -4,6 +4,7 @@ import { RootState, AppDispatch } from '../../store/store';
 import { setUsers } from '../../store/userSlice';
 import TableBody from './components/TableBody';
 import TableHead from './components/TableHead';
+import Footer from '../../shared/Footer';
 
 const Users: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -62,6 +63,7 @@ const Users: React.FC = () => {
           <TableBody isLoading={isLoading} users={filteredUsers} />
         </table>
       </div>
+      <Footer />
     </div>
   );
 };

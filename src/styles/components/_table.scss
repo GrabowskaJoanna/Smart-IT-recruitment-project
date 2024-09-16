@@ -1,20 +1,5 @@
 @import '../variables';
 
-.page_container {
-  background-color: $background-color;
-  height: 100vh;
-  font-family: $primary-font;
-
-  .page_header {
-    margin: 0;
-    padding: 20px;
-    box-shadow: $primary-color 0px 1px 4px;
-    color: $primary-color;
-    font-size: 40px;
-    font-weight: bold;
-  }
-}
-
 .table_container {
   display: flex;
   justify-content: center;
@@ -29,13 +14,12 @@
   margin: 40px;
   tr {
     display: flex;
-    border-bottom: 1px solid #921a4067;
+    box-shadow: $primary-color 0px 0.5px 2px;
     padding: 12px 0;
     justify-content: space-around;
 
     &:last-of-type {
       border-bottom: none;
-      box-shadow: $primary-color 0px 1px 4px;
     }
 
     th {

@@ -1,3 +1,5 @@
+@import '../variables';
+
 .loader-parent {
   display: flex;
   justify-content: center;
@@ -6,8 +8,8 @@
 }
 
 .loader {
-  border: 8px solid #ffd4cf;
-  border-top: 8px solid #921a40;
+  border: 8px solid $table-color;
+  border-top: 8px solid $primary-color;
   border-radius: 50%;
   width: 32px;
   height: 32px;

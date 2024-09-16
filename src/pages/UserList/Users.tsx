@@ -55,6 +55,7 @@ const Users: React.FC = () => {
 
   useEffect(() => {
     showUser();
+    // @ts-ignore
   }, []);
 
   return (

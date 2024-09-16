@@ -55,8 +55,7 @@ const Users: React.FC = () => {
 
   useEffect(() => {
     showUser();
-    // @ts-ignore
-  }, []);
+  }, [showUser]);
 
   return (
     <div className="page_container">

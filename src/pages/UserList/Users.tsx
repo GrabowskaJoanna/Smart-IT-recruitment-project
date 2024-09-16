@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../store/store';
 import { setUsers } from '../../store/userSlice';
@@ -29,7 +29,7 @@ const Users: React.FC = () => {
       user.email?.toLowerCase().includes(filters.email?.toLowerCase())
   );
 
-  const showUser = async () => {
+  const showUser = useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await fetch(
@@ -51,7 +51,7 @@ const Users: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     showUser();
